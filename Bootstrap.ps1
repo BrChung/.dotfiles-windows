@@ -5,7 +5,7 @@ $GitHubRepo = ".dotfiles-windows"
 $GitHubBranch = "main"
 $GitHubRepoUri = "https://github.com/${GitHubAuthor}/${GitHubRepo}/archive/refs/heads/${GitHubBranch}.zip";
 
-$DotfilesDir = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}";
+$DotfilesDir = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}-test";
 $DotfilesSrcDir = Join-Path -Path $DotfilesDir -ChildPath "src";
 $RepoZip = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}.zip";
 
