@@ -9,24 +9,26 @@ $DotfilesDir = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}";
 $DotfilesSrcDir = Join-Path -Path $DotfilesDir -ChildPath "src";
 $RepoZip = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}.zip";
 
-# Create Dotfiles folder
-if (Test-Path $DotfilesDir) {
-  Remove-Item -Path $DotfilesDir -Recurse -Force;
-}
-New-Item $DotfilesDir -ItemType directory;
+Write-Host "The following is the dotfiles path: ${DotfilesDir}" -ForegroundColor "White";
 
-# Download Dotfiles repository as Zip
-$DownloadResult = $FALSE;
-Try {
-  Invoke-WebRequest $GitHubRepoUri -O $RepoZip;
-  $DownloadResult = $TRUE;
-}
-catch [System.Net.WebException] {
-  Write-Host "Error connecting to GitHub, check the internet connection or the repository url." -ForegroundColor "Red";
-}
+# # Create Dotfiles folder
+# if (Test-Path $DotfilesDir) {
+#   Remove-Item -Path $DotfilesDir -Recurse -Force;
+# }
+# New-Item $DotfilesDir -ItemType directory;
 
-if ($DownloadResult) {
-  Add-Type -AssemblyName System.IO.Compression.FileSystem;
-  [System.IO.Compression.ZipFile]::ExtractToDirectory($RepoZip, $HOME);
-  Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Setup.ps1");
-}
+# # Download Dotfiles repository as Zip
+# $DownloadResult = $FALSE;
+# Try {
+#   Invoke-WebRequest $GitHubRepoUri -O $RepoZip;
+#   $DownloadResult = $TRUE;
+# }
+# catch [System.Net.WebException] {
+#   Write-Host "Error connecting to GitHub, check the internet connection or the repository url." -ForegroundColor "Red";
+# }
+
+# if ($DownloadResult) {
+#   Add-Type -AssemblyName System.IO.Compression.FileSystem;
+#   [System.IO.Compression.ZipFile]::ExtractToDirectory($RepoZip, $HOME);
+#   Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Setup.ps1");
+# }
