@@ -7,9 +7,9 @@ $GitHubRepoUri = "https://github.com/${GitHubAuthor}/${GitHubRepo}/archive/refs/
 
 Write-Host "The following is the dotfiles repo: ${GitHubRepo}" -ForegroundColor "White";
 
-$DotfilesDir = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}-test";
+$DotfilesDir = Join-Path -Path $HOME -ChildPath "${GitHubRepo}";
 $DotfilesSrcDir = Join-Path -Path $DotfilesDir -ChildPath "src";
-$RepoZip = Join-Path -Path $HOME -ChildPath "${$GitHubRepo}.zip";
+$RepoZip = Join-Path -Path $HOME -ChildPath "${GitHubRepo}.zip";
 
 Write-Host "The following is the dotfiles path: ${DotfilesDir}" -ForegroundColor "White";
 
