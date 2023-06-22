@@ -13,6 +13,7 @@ foreach ($DotfilesHelper in $DotfilesHelpers) {
 };
 
 # Save user configuration in persistence
+$DotfilesConfigFile = Join-Path -Path $DotfilesDir -ChildPath "config.json";
 Set-Configuration-File -DotfilesConfigFile $DotfilesConfigFile -GitUserName $GitUserName -GitUserEmail $GitUserEmail;
 
 # Load user configuration from persistence
