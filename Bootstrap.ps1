@@ -1,5 +1,3 @@
-# Based on https://github.com/JMOrbegoso/Dotfiles-for-Windows-11
-
 $GitHubAuthor = "BrChung"
 $GitHubRepo = ".dotfiles-windows"
 $GitHubBranch = "main"
