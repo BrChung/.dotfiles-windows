@@ -1,19 +1,3 @@
-# Based on https://github.com/JMOrbegoso/Dotfiles-for-Windows-11
-
-function Load-PS-Files-From-Directory {
-  [CmdletBinding()]
-  param (
-    [Parameter( Position = 0, Mandatory = $TRUE)]
-    [String]
-    $Directory
-  )
-
-  $PSFiles = Get-ChildItem -Path "${Directory}\*" -Include *.ps1 -Recurse;
-  foreach ($PSFile in $PSFiles) {
-    . $PSFile;
-  };
-}
-
 $GitUserName = "BrChung"
 $GitUserEmail = "brian@brianchung.co"
 
@@ -23,8 +7,7 @@ Write-Host "Please don't use the device while the script is running." -Foregroun
 # Load helpers
 $DotfilesHelpersDir = Join-Path -Path $DotfilesSrcDir -ChildPath "Helpers";
 Write-Host "Loading helpers:" -ForegroundColor "Green";
-Load-PS-Files-From-Directory -Directory $DotfilesHelpersDir;
-
+$DotfilesHelpers = Get-ChildItem -Path "${DotfilesHelpersDir}\*" -Include *.ps1 -Recurse;
 foreach ($DotfilesHelper in $DotfilesHelpers) {
   . $DotfilesHelper;
 };
@@ -42,9 +25,12 @@ Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Chocolatey" | Joi
 Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Git" | Join-Path -ChildPath "Git.ps1");
 
 # Install Apps
-$DotfilesHelpersDir = Join-Path -Path $DotfilesSrcDir -ChildPath "Apps";
+$DotfilesAppsDir = Join-Path -Path $DotfilesSrcDir -ChildPath "Apps";
 Write-Host "Installing apps:" -ForegroundColor "Green";
-Load-PS-Files-From-Directory -Directory $DotfilesHelpersDir;
+$DotfilesApps = Get-ChildItem -Path "${DotfilesAppsDir}\*" -Include *.ps1 -Recurse;
+foreach ($DotfilesApp in $DotfilesApps) {
+  . $DotfilesApp;
+};
 
 # Clean
 # Unregister script from RunOnce
