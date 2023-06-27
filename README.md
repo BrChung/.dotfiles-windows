@@ -8,3 +8,8 @@ $GitHubRepo = ".dotfiles-windows"; `
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; `
 Invoke-Expression (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/${GitHubAuthor}/${GitHubRepo}/main/Bootstrap.ps1");
 ```
+
+```Powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; `
+Invoke-Expression "&'C:\Users\Brian Chung\GitHub\.dotfiles-windows/Run.ps1'";
+```
