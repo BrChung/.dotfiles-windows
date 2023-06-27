@@ -22,8 +22,8 @@ $Config = Get-Configuration-File -DotfilesConfigFile $DotfilesConfigFile;
 # Register the script to start after reboot
 Register-DotfilesScript-As-RunOnce;
 
-Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Chocolatey" | Join-Path -ChildPath "Chocolatey.ps1");
-Invoke-Expression (Join-Path -Path $DotfilesSrcDir -ChildPath "Git" | Join-Path -ChildPath "Git.ps1");
+Invoke-Expression (Join-Path -Path '&$DotfilesSrcDir' -ChildPath "Chocolatey" | Join-Path -ChildPath "Chocolatey.ps1");
+Invoke-Expression (Join-Path -Path '&$DotfilesSrcDir' -ChildPath "Git" | Join-Path -ChildPath "Git.ps1");
 
 # Install Apps
 $DotfilesAppsDir = Join-Path -Path $DotfilesSrcDir -ChildPath "Apps";
