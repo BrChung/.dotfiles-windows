@@ -33,6 +33,16 @@ foreach ($DotfilesApp in $DotfilesApps) {
   . $DotfilesApp;
 };
 
+# Apply settings changes
+$SettingsDir = Join-Path -Path $DotfilesSrcDir -ChildPath "Settings";
+Write-Host "Applying settings:" -ForegroundColor "Green";
+$Settings = Get-ChildItem -Path "${SettingsDir}\*" -Include *.ps1 -Recurse;
+foreach ($Setting in $Settings) {
+  . $Setting;
+};
+Write-Host "Restarting Explorer..." -ForegroundColor "Green";
+Stop-Process -processName: Explorer -force;
+
 # Clean
 # Unregister script from RunOnce
 Remove-DotfilesScript-From-RunOnce;

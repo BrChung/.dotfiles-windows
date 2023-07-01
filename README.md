@@ -11,5 +11,5 @@ Invoke-Expression (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/${G
 
 ```Powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; `
-Invoke-Expression "&'C:\Users\Brian Chung\GitHub\.dotfiles-windows/Run.ps1'";
+Invoke-Expression "&'C:\GitHub\.dotfiles-windows/Run.ps1'";
 ```
